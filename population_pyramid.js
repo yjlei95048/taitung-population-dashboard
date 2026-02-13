@@ -11,7 +11,7 @@ let female = [];
 rows.forEach(row => {
     const cols = row.split(',');
 
-    if(cols[0] === '臺東市'){   // 先測試臺東市
+    if(cols[0].trim() === '臺東市')){   // 先測試臺東市
 
         if(cols[2] === '男'){
             age.push(cols[1]);
