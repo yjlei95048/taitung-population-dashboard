@@ -1,41 +1,27 @@
 window.addEventListener("DOMContentLoaded", function() {
 
-    alert("JS已載入");
-
-    fetch('./population_pyramid.csv')
-    .then(response => response.text())
+    fetch('population_pyramid.json')
+    .then(response => response.json())
     .then(data => {
-
-        console.log("CSV成功讀取");
-
-        const rows = data.trim().split(/\r?\n/).slice(1);
 
         let age = [];
         let male = [];
         let female = [];
 
-        rows.forEach(row => {
+        data.forEach(item => {
 
-            const cols = row.split(/[,;]/);
+            if(item.鄉鎮市 === '大武鄉'){
 
-            if(cols.length >= 4 && cols[0].trim() === '大武鄉'){
-
-                if(cols[2].trim() === '男'){
-                    age.push(cols[1].trim());
-                    male.push(parseInt(cols[3]));
+                if(item.性別 === '男'){
+                    age.push(item.年齡層);
+                    male.push(item.人口數);
                 }
-                else if(cols[2].trim() === '女'){
-                    female.push(parseInt(cols[3]));
+                else if(item.性別 === '女'){
+                    female.push(item.人口數);
                 }
             }
+
         });
-
-        console.log("年齡筆數:", age.length);
-
-        if(age.length === 0){
-            alert("沒有抓到資料");
-            return;
-        }
 
         var chart = echarts.init(document.getElementById('chart'));
 
