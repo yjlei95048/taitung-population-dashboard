@@ -1,4 +1,5 @@
 alert("JS已載入");
+console.log("ECharts物件:", echarts);
 
 // 直接寫死一組測試資料
 let age = ["0-4歲","5-9歲","10-14歲"];
