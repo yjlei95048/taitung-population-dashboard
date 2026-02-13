@@ -11,11 +11,11 @@ let male = [];
 let female = [];
 
 rows.forEach(row => {
-    const cols = row.split(',');
+    const cols = row.split(/[,;\t]/);
     console.log(cols);
 
 
-    if(cols[0].trim() === '大武鄉'){
+    if(cols.length >= 4 && cols[0].trim() === '大武鄉'){
 
     if(cols[2].trim() === '男'){
         age.push(cols[1].trim());
