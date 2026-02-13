@@ -2,20 +2,23 @@ fetch('population_pyramid.csv')
 .then(response => response.text())
 .then(data => {
 
-const rows = data.split('\n').slice(1);
-const filtered = rows.filter(r => r.includes('臺東市'));
+const rows = data.trim().split(/\r?\n/).slice(1);
 
 let age = [];
 let male = [];
 let female = [];
 
-filtered.forEach(row => {
+rows.forEach(row => {
     const cols = row.split(',');
-    age.push(cols[1]);
-    if(cols[2] === '男'){
-        male.push(parseInt(cols[3]));
-    } else {
-        female.push(parseInt(cols[3]));
+
+    if(cols[0] === '臺東市'){   // 先測試臺東市
+
+        if(cols[2] === '男'){
+            age.push(cols[1]);
+            male.push(parseInt(cols[3]));
+        } else if(cols[2] === '女'){
+            female.push(parseInt(cols[3]));
+        }
     }
 });
 
