@@ -11,15 +11,16 @@ let female = [];
 rows.forEach(row => {
     const cols = row.split(',');
 
-    if(cols[0].trim() === '大武鄉'){   // 先測試大武鄉
+    if(cols[0].trim() === '大武鄉'){
 
-        if(cols[2] === '男'){
-            age.push(cols[1]);
-            male.push(parseInt(cols[3]));
-        } else if(cols[2] === '女'){
-            female.push(parseInt(cols[3]));
-        }
+    if(cols[2].trim() === '男'){
+        age.push(cols[1].trim());
+        male.push(parseInt(cols[3]));
+    } 
+    else if(cols[2].trim() === '女'){
+        female.push(parseInt(cols[3]));
     }
+}
 });
 
 var chart = echarts.init(document.getElementById('chart'));
