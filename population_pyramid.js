@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
     alert("JS已載入");
 
-    fetch('population_pyramid.csv')
+    fetch('https://yjlei95048.github.io/taitung-population-dashboard/population_pyramid.csv')
     .then(response => response.text())
     .then(data => {
 
