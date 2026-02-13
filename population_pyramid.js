@@ -1,3 +1,5 @@
+alert("JS已載入");
+
 fetch('population_pyramid.csv')
 .then(response => response.text())
 .then(data => {
