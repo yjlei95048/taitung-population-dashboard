@@ -12,6 +12,8 @@ let female = [];
 
 rows.forEach(row => {
     const cols = row.split(',');
+    console.log(cols);
+
 
     if(cols[0].trim() === '大武鄉'){
 
